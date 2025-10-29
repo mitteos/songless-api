@@ -1,0 +1,40 @@
+{
+  "name": "songless-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@prisma/client": "^6.18.0",
+    "@supabase/supabase-js": "^2.76.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "multer": "^2.0.2",
+    "music-metadata": "^11.9.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.4",
+    "@types/fluent-ffmpeg": "^2.1.28",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.9.1",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.18.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

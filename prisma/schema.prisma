@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Genre {
+  id        Int      @id @default(autoincrement())
+  name      String
+  musics    Music[]
+}
+
+model Year {
+  id        Int      @id @default(autoincrement())
+  name      String
+  musics    Music[]
+}
+
+model Music {
+  id        Int      @id @default(autoincrement())
+  name      String
+  author    String
+  audio_url String
+
+  genreId   Int
+  genre     Genre    @relation(fields: [genreId], references: [id])
+
+  yearId    Int
+  year      Year     @relation(fields: [yearId], references: [id])
+
+  playlists Playlist[]
+
+  createdAt DateTime @default(now())
+}
+
+model Playlist {
+  id        Int      @id @default(autoincrement())
+  name      String
+  image_url String?
+  
+  musics    Music[]
+}
