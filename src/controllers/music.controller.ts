@@ -87,6 +87,7 @@ export const createMusic = async (req: Request, res: Response) => {
     // 6️⃣ Удаляем временные файлы
     fs.unlinkSync(inputPath);
     fs.unlinkSync(trimmedPath);
+    fs.rmdirSync("uploads");
 
     return res.status(201).json(newMusic);
   } catch (err: any) {
@@ -179,6 +180,8 @@ export const createManyMusic = async (req: Request, res: Response) => {
 
       results.push(created);
     }
+
+    fs.rmdirSync("uploads");
 
     return res.status(201).json({ items: results });
   } catch (err: any) {
